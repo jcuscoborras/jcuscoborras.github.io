@@ -37,8 +37,7 @@ h2 { font-size: clamp(3rem, 5vw, 5.25rem); line-height: .94; }
 .button { display: inline-flex; align-items: center; gap: 1.15rem; background: var(--accent); color: white; padding: .7rem 1.1rem; text-decoration: none; font-size: .9rem; font-weight: 600; }
 .button:hover { background: #223620; }
 .text-link { color: var(--accent); font-size: .92rem; font-weight: 700; }
-.hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1.1; object-fit: cover; object-position: 26% center; background: var(--tint); }
-figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; column-gap: 1rem; color: var(--muted); font-size: .79rem; padding-top: .6rem; }
+.hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1.1; object-fit: cover; object-position: center 72%; background: var(--tint); }
 
 .section { padding-block: clamp(3.1rem, 7vw, 6.3rem); scroll-margin-top: 1rem; }
 .section-grid { display: grid; grid-template-columns: .94fr 1fr; gap: clamp(1.5rem, 6vw, 6rem); align-items: start; }
