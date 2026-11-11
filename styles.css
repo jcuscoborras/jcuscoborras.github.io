@@ -37,11 +37,16 @@ h2 { font-size: clamp(3rem, 5vw, 5.25rem); line-height: .94; }
 .button { display: inline-flex; align-items: center; gap: 1.15rem; background: var(--accent); color: white; padding: .7rem 1.1rem; text-decoration: none; font-size: .9rem; font-weight: 600; }
 .button:hover { background: #223620; }
 .text-link { color: var(--accent); font-size: .92rem; font-weight: 700; }
-.hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1.1; object-fit: cover; object-position: center 72%; background: var(--tint); }
+.hero-photo { overflow: hidden; }
+.hero-photo img { transform: scale(1.10); transform-origin: 75% 70%; display: block; width: 100%; height: auto; aspect-ratio: 1.1; object-fit: cover; object-position: center 86%; background: var(--tint); }
 
 .section { padding-block: clamp(3.1rem, 7vw, 6.3rem); scroll-margin-top: 1rem; }
 .section-grid { display: grid; grid-template-columns: .94fr 1fr; gap: clamp(1.5rem, 6vw, 6rem); align-items: start; }
 .research { background: var(--tint); }
+.photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; margin-top: 1.35rem; }
+.photo-grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--tint); }
+.photo-grid .photo-low { object-position: center 85%; }
+.photo-grid .photo-wide { grid-column: 1 / -1; aspect-ratio: 2 / 1; }
 .section-copy { color: var(--muted); }
 .section-copy p + p { margin-top: 1rem; }
 .lead { color: var(--ink); font-size: 1.16rem; line-height: 1.6; }
