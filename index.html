@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=single-research-photo-20261112">
+  <link rel="stylesheet" href="styles.css?v=research-gallery-2">
+  <script src="gallery.js?v=2" defer></script>
 </head>
 <body id="top">
   <a class="skip" href="#main">Skip to content</a>
@@ -43,9 +44,18 @@
         <div>
           <p class="eyebrow">Doctoral research</p>
           <h2 id="research-title">The evolution of<br class="wide"> hoop-petticoat daffodils</h2>
-          <div class="research-photos">
-            <img src="daffodils-yellow.webp" alt="A bumblebee visiting a pale yellow hoop-petticoat daffodil" loading="lazy" decoding="async">
-          </div>
+          <figure class="research-photos" aria-label="Doctoral research photo gallery">
+            <img id="research-image" src="daffodils-yellow.webp" alt="A bumblebee visiting a pale yellow hoop-petticoat daffodil" width="680" height="453" loading="lazy" decoding="async">
+            <figcaption class="gallery-caption">
+              <span id="gallery-caption" aria-live="polite">A bumblebee visiting a hoop-petticoat daffodil</span>
+            </figcaption>
+            <div class="gallery-controls" hidden>
+              <button type="button" id="gallery-prev" aria-label="Previous photo">←</button>
+              <span id="gallery-count" aria-label="Photo 1 of 4">1 / 4</span>
+              <button type="button" id="gallery-next" aria-label="Next photo">→</button>
+              <button type="button" id="gallery-play">Play</button>
+            </div>
+          </figure>
         </div>
         <div class="section-copy">
           <p class="lead">My PhD focuses on <i>Narcissus</i> sect. <i>Bulbocodii</i>, a group of daffodils native to the western Mediterranean and commonly known as hoop-petticoat daffodils. I combine extensive fieldwork with flow cytometry, genomics and greenhouse experiments to study their diversification.</p>

@@ -53,7 +53,32 @@ h2 { font-size: clamp(3rem, 5vw, 5.25rem); line-height: .94; }
   object-fit: cover;
   background: var(--tint);
 }
-.research-photos img { height: clamp(8.75rem, 16vw, 11rem); }
+.research-photos img { height: auto; aspect-ratio: 16 / 9; }
+.research-photos img.show-full-photo { object-fit: contain; }
+.gallery-caption {
+  margin-top: .45rem;
+  color: var(--muted);
+  font-size: .87rem;
+  line-height: 1.4;
+  min-height: 2.8em;
+}
+.gallery-controls { display: flex; align-items: center; gap: .4rem; }
+.gallery-controls[hidden] { display: none; }
+.gallery-controls button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: .3rem .55rem;
+  font: inherit;
+  font-size: .87rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+.gallery-controls button:hover { border-color: var(--accent); }
+.gallery-controls button:focus-visible { outline: 3px solid #846519; outline-offset: 3px; }
+#gallery-count { color: var(--muted); font-size: .85rem; }
+#gallery-play { margin-left: auto; }
 .about-photo img { height: auto; }
 .section-copy { color: var(--muted); }
 .section-copy p + p { margin-top: 1rem; }
