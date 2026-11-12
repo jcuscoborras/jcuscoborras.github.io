@@ -1,49 +1,39 @@
 (() => {
-  const image = document.querySelector("#research-image");
-  const gallery = image.closest("figure");
+  const gallery = document.querySelector(".research-photos");
+  const images = gallery.querySelectorAll(".gallery-frame img");
   const caption = document.querySelector("#gallery-caption");
   const count = document.querySelector("#gallery-count");
   const play = document.querySelector("#gallery-play");
   const controls = gallery.querySelector(".gallery-controls");
 
   const photos = [
-    {
-      src: image.getAttribute("src"),
-      alt: image.alt,
-      caption: caption.textContent,
-      position: "50% 55%",
-    },
-    {
-      src: "daffodils-white.webp",
-      alt: "Close-up of white hoop-petticoat daffodils with yellow centres",
-      caption: "White hoop-petticoat daffodils",
-      scientificName: "Narcissus cantabricus",
-      fit: "contain",
-    },
-    {
-      src: "daffodils-meadow.webp",
-      alt: "Yellow hoop-petticoat daffodils flowering in a mountain meadow",
-      caption: "Hoop-petticoat daffodils in their habitat",
-      fit: "contain",
-    },
-    {
-      src: "daffodils-greenhouse.webp",
-      alt: "Potted daffodils with coloured tags in a greenhouse",
-      caption: "Daffodils grown for greenhouse experiments",
-      position: "50% 72%",
-    },
+    { caption: caption.textContent },
+    { caption: "White hoop-petticoat daffodils", scientificName: "Narcissus cantabricus" },
+    { caption: "Hoop-petticoat daffodils in their habitat" },
+    { caption: "Daffodils grown for greenhouse experiments" },
   ];
 
   let current = 0;
+  let requested = 0;
+  let requestId = 0;
   let timer = null;
 
-  function show(offset) {
-    current = (current + offset + photos.length) % photos.length;
+  async function show(offset) {
+    const next = (requested + offset + photos.length) % photos.length;
+    requested = next;
+    const id = ++requestId;
+    try {
+      await images[next].decode();
+    } catch {
+      if (id === requestId) requested = current;
+      return;
+    }
+    if (id !== requestId) return;
+
+    images[current].hidden = true;
+    images[next].hidden = false;
+    current = next;
     const photo = photos[current];
-    image.src = photo.src;
-    image.alt = photo.alt;
-    image.style.objectPosition = photo.position ?? "";
-    image.classList.toggle("show-full-photo", photo.fit === "contain");
     caption.textContent = photo.caption;
     if (photo.scientificName) {
       const name = document.createElement("i");
@@ -85,6 +75,5 @@
     if (document.hidden) stop();
   });
 
-  image.style.objectPosition = photos[0].position;
   controls.hidden = false;
 })();

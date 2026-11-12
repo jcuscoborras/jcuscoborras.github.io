@@ -20,8 +20,7 @@ p, h1, h2, dl, figure { margin: 0; }
 .skip { position: fixed; z-index: 2; top: .75rem; left: 1rem; padding: .5rem 1rem; transform: translateY(-200%); background: var(--paper); }
 .skip:focus { transform: none; }
 
-.site-header { min-height: 5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--line); }
-.wordmark { font-family: var(--serif); font-size: 1.75rem; line-height: 1.1; text-decoration: none; }
+.site-header { min-height: 5rem; display: flex; justify-content: flex-end; align-items: center; gap: 1rem; border-bottom: 1px solid var(--line); }
 nav { display: flex; flex-wrap: wrap; gap: clamp(1rem, 3vw, 2.5rem); }
 nav a { color: var(--muted); font-weight: 600; font-size: .88rem; text-decoration: none; }
 nav a:hover { text-decoration: underline; }
@@ -53,7 +52,11 @@ h2 { font-size: clamp(3rem, 5vw, 5.25rem); line-height: .94; }
   object-fit: cover;
   background: var(--tint);
 }
-.research-photos img { height: auto; aspect-ratio: 16 / 9; }
+.gallery-frame { position: relative; aspect-ratio: 16 / 9; }
+.gallery-frame img { position: absolute; inset: 0; height: 100%; }
+.gallery-frame img[hidden] { display: none; }
+.gallery-bee { object-position: 50% 55%; }
+.gallery-greenhouse { object-position: 50% 72%; }
 .research-photos img.show-full-photo { object-fit: contain; }
 .gallery-caption {
   margin-top: .45rem;
@@ -87,7 +90,6 @@ h2 { font-size: clamp(3rem, 5vw, 5.25rem); line-height: .94; }
 .topics > div { padding-block: .85rem; border-top: 1px solid var(--line); }
 .topics dt { color: var(--ink); font-weight: 700; }
 .topics dd { margin: .12rem 0 0; }
-.section-link { display: inline-block; margin-top: 1.3rem; }
 .papers { margin: 0; padding: 0; list-style: none; }
 .papers li { padding-block: 1.1rem; border-top: 1px solid var(--line); }
 .papers li:last-child { border-bottom: 1px solid var(--line); }
@@ -101,7 +103,7 @@ h2 { font-size: clamp(3rem, 5vw, 5.25rem); line-height: .94; }
 
 @media (max-width: 760px) {
   .wrap { width: calc(100% - 2.5rem); }
-  .site-header { padding-block: .9rem; min-height: auto; flex-wrap: wrap; }
+  .site-header { padding-block: .9rem; min-height: auto; justify-content: flex-start; }
   .hero, .section-grid { grid-template-columns: 1fr; }
   .hero { gap: 2rem; }
   h1 br, .wide { display: none; }
